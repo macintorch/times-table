@@ -2,8 +2,10 @@ package ainor.com.my.timestable;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SeekBar;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,27 @@ public class MainActivity extends AppCompatActivity {
         sifirListView.setAdapter(arrayAdapter);
 
 
+        // control sifir
 
+        SeekBar controlSeekBar = (SeekBar) findViewById(R.id.controlSeekBar);
+
+        controlSeekBar.setMax(12);
+
+        controlSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.i("Sifir : ", String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 }
