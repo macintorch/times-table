@@ -18,31 +18,24 @@ public class MainActivity extends AppCompatActivity {
 
         //List of sifir
 
-        ListView sifirListView = (ListView) findViewById(R.id.sifirListView);
+        ListView listView = (ListView) findViewById(R.id.listView);
+
+        int timesTable = 6;
 
         ArrayList sifir = new ArrayList();
 
-        sifir.add(1);
-        sifir.add(2);
-        sifir.add(3);
-        sifir.add(4);
-        sifir.add(5);
-        sifir.add(6);
-        sifir.add(7);
-        sifir.add(8);
-        sifir.add(9);
-        sifir.add(10);
-        sifir.add(11);
-        sifir.add(12);
+        for (int i = 1; i <= 12; i++) {
+            sifir.add(Integer.toString(i*timesTable));
+        }
+
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, sifir);
 
-        sifirListView.setAdapter(arrayAdapter);
-
+        listView.setAdapter(arrayAdapter);
 
         // control sifir
 
-        SeekBar controlSeekBar = (SeekBar) findViewById(R.id.controlSeekBar);
+        final SeekBar controlSeekBar = (SeekBar) findViewById(R.id.controlSeekBar);
 
         controlSeekBar.setMax(12);
         controlSeekBar.setProgress(6);
@@ -56,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 int timesTable;
                 if (i < min) {
                     timesTable = min;
+                    controlSeekBar.setProgress(min);
                 } else {
                     timesTable = i;
                 }
@@ -74,5 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 }
