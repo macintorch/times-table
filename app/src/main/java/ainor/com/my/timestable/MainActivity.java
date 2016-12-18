@@ -3,6 +3,7 @@ package ainor.com.my.timestable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -11,16 +12,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    ListView listView;
 
-        //List of sifir
+    public void generateTimesTable (int timesTable) {
 
-        ListView listView = (ListView) findViewById(R.id.listView);
-
-        int timesTable = 6;
 
         ArrayList sifir = new ArrayList();
 
@@ -32,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, sifir);
 
         listView.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+        //List of sifir
+
+        listView = (ListView) findViewById(R.id.listView);
+        generateTimesTable(6);
+
 
         // control sifir
 
@@ -54,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     timesTable = i;
                 }
 
+                generateTimesTable(timesTable);
                 Log.i("TimesTable : ", String.valueOf(timesTable));
 
             }
