@@ -45,11 +45,23 @@ public class MainActivity extends AppCompatActivity {
         SeekBar controlSeekBar = (SeekBar) findViewById(R.id.controlSeekBar);
 
         controlSeekBar.setMax(12);
+        controlSeekBar.setProgress(6);
 
         controlSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.i("Sifir : ", String.valueOf(i));
+
+
+                int min = 1;
+                int timesTable;
+                if (i < min) {
+                    timesTable = min;
+                } else {
+                    timesTable = i;
+                }
+
+                Log.i("TimesTable : ", String.valueOf(timesTable));
+
             }
 
             @Override
